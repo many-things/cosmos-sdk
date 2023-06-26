@@ -8,6 +8,7 @@ import (
 	context "context"
 	reflect "reflect"
 
+	collections "cosmossdk.io/collections"
 	address "cosmossdk.io/core/address"
 	math "cosmossdk.io/math"
 	types "github.com/cosmos/cosmos-sdk/types"
@@ -447,6 +448,20 @@ func (m *MockBankKeeper) GetParams(ctx context.Context) types0.Params {
 func (mr *MockBankKeeperMockRecorder) GetParams(ctx interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetParams", reflect.TypeOf((*MockBankKeeper)(nil).GetParams), ctx)
+}
+
+// GetSchema mocks base method.
+func (m *MockBankKeeper) GetSchema() collections.Schema {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "GetSchema")
+	ret0, _ := ret[0].(collections.Schema)
+	return ret0
+}
+
+// GetSchema indicates an expected call of GetSchema.
+func (mr *MockBankKeeperMockRecorder) GetSchema() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSchema", reflect.TypeOf((*MockBankKeeper)(nil).GetSchema))
 }
 
 // GetSendEnabledEntry mocks base method.

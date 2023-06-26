@@ -27,6 +27,8 @@ var _ ViewKeeper = (*BaseViewKeeper)(nil)
 // ViewKeeper defines a module interface that facilitates read only access to
 // account balances.
 type ViewKeeper interface {
+	GetSchema() collections.Schema
+
 	ValidateBalance(ctx context.Context, addr sdk.AccAddress) error
 	HasBalance(ctx context.Context, addr sdk.AccAddress, amt sdk.Coin) bool
 
@@ -94,6 +96,10 @@ func NewBaseViewKeeper(cdc codec.BinaryCodec, storeService store.KVStoreService,
 	}
 	k.Schema = schema
 	return k
+}
+
+func (k BaseViewKeeper) GetSchema() collections.Schema {
+	return k.Schema
 }
 
 // HasBalance returns whether or not an account has at least amt balance.

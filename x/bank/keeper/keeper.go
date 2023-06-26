@@ -21,7 +21,10 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/bank/types"
 )
 
-var _ Keeper = (*BaseKeeper)(nil)
+var (
+	_ Keeper          = (*BaseKeeper)(nil)
+	_ MigrationKeeper = (*BaseKeeper)(nil)
+)
 
 // Keeper defines a module interface that facilitates the transfer of coins
 // between accounts.
